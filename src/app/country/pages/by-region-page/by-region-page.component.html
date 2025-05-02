@@ -1,5 +1,12 @@
 <section class="flex flex-col gap-2 mt-2">
-    <div class="bg-base-100 shadow-sm">
-        <app-country-list />
+    <div class="flex gap-2 bg-base-100 shadow-sm">
+        @for (item of regions; track $index) {
+        <button class="btn-outline btn" (click)="region.set(item)" [class.btn-info]="region()==item">
+            {{ item }}
+        </button>
+        }
     </div>
+
+    <app-country-list [countries]="countryResource.value() ?? []" [isLoading]="countryResource.isLoading()"
+        [errorMessage]="countryResource.error()" [isEmpty]="countryResource.hasValue()" />
 </section>

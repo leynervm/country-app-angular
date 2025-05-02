@@ -1,12 +1,9 @@
 <section class="flex flex-col gap-2 mt-2">
     <div class="bg-base-100 shadow-sm">
-        <app-country-search-input placeholder="Buscar por capital" (search)="query.set($event)" />
+        <app-country-search-input placeholder="Buscar por capital" (search)="query.set($event)" [initialValue]="query()"
+            [debounceTime]="500" />
 
-        @if(countryResource.error()) {
-        <p class="py-3 text-error text-xs">{{ countryResource.error() }}</p>
-        }
-        @else if(countryResource.hasValue()) {
-        <app-country-list [countries]="countryResource.value()!" />
-        }
+        <app-country-list [countries]="countryResource.value()?? []" [isLoading]="countryResource.isLoading()"
+            [errorMessage]="countryResource.error()" [isEmpty]="countryResource.value()?.length ===0" />
     </div>
 </section>

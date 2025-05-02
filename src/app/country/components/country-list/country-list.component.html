@@ -7,6 +7,7 @@
                 <th>Bandera</th>
                 <th>Nombre</th>
                 <th>Capital</th>
+                <th>Región</th>
                 <th>Población</th>
                 <th></th>
             </tr>
@@ -21,6 +22,7 @@
                 </td>
                 <td>{{ country.name }}</td>
                 <td>{{ country.capital }}</td>
+                <td>{{ country.region }}</td>
                 <td>
                     <span class="badge badge-primary">
                         {{ country.population | number }}
@@ -36,7 +38,7 @@
 
             @if (errorMessage()) {
             <tr>
-                <td colspan="7" class="text-error text-center">
+                <td colspan="8" class="text-error text-center">
                     {{ errorMessage() }}
                 </td>
             </tr>
@@ -44,7 +46,7 @@
 
             @if(countries().length === 0 && !isLoading() && !errorMessage()) {
             <tr>
-                <td colspan="7" class="text-error text-center">
+                <td colspan="8" class="text-error text-center">
                     No se encontraron resultados.
                 </td>
             </tr>
@@ -52,12 +54,8 @@
 
             @if (isLoading()) {
             <tr>
-                <td colspan="7" class="text-error text-center">
-                    <div class="shadow-md p-3 rounded-lg animate-pulse skeleton">
-                        <div class="bg-gray-500 mb-2 rounded w-full h-6"></div>
-                        <div class="bg-gray-500 mb-2 rounded w-full h-6"></div>
-                        <div class="bg-gray-500 mb-2 rounded w-full h-6"></div>
-                    </div>
+                <td colspan="8" class="text-error text-center">
+                    <app-loading />
                 </td>
             </tr>
             }

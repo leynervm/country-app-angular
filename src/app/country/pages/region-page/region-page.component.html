@@ -1,0 +1,8 @@
+<div class="flex gap-2 bg-base-100 shadow-sm">
+    @for (item of regions(); track $index) {
+    <a class="btn btn-soft" [routerLink]="['/country/by-region', item.value]" routerLinkActive="btn-info"
+        [routerLinkActiveOptions]="{exact:true}">
+        {{ item.text }}
+    </a>
+    }
+</div>

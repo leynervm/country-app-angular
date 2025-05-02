@@ -1,1 +1,11 @@
-<h1 class="text-blue-500 text-2xl">PAIS : {{ query() }}</h1>
+@if (countryResource.error()) {
+<app-not-found />
+}
+
+@if (countryResource.hasValue()) {
+<app-country-information [country]="countryResource.value()" />
+}
+
+@if (countryResource.isLoading()) {
+    <app-loading />
+}
